@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import List
 
-from schemas.post import Post, PostCreateInput
+from schemas.post import Post
 from services.post import get_post_list
 
 
