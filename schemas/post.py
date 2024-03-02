@@ -9,3 +9,7 @@ class Post(BaseModel):
     author: str
     created_at: datetime
 
+class PostCreateInput(BaseModel):
+    title: str
+    content: str
+    author: str
