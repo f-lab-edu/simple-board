@@ -15,10 +15,9 @@ async def get_post_list_api():
 
 @router.get("/posts/{post_id}", response_model=Post, status_code=status.HTTP_200_OK)
 async def get_post_detail_api(post_id: str) :
-    try:
-        return post_service.get_post_detail(post_id)
-    except KeyError:
-        raise HTTPException(status_code=404,detail="Not Found")
+    if cur_post:= post_service.get_post_detail(post_id):
+        return cur_post
+    raise HTTPException(status_code=404,detail="Not Found")
 
 
 @router.post("/posts/", response_model=dict, status_code=status.HTTP_201_CREATED)
