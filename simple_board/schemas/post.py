@@ -10,6 +10,7 @@ class Post(BaseModel):
     content: str | None
     author: str
     created_at: datetime
+    modified_at: datetime | None
 
 
 class PostCreateInput(Post):
@@ -18,3 +19,11 @@ class PostCreateInput(Post):
     content: str
     author: str
     created_at: datetime = Field(default_factory=datetime.now)
+    modified_at: datetime = None
+
+
+class PostUpdateInput(BaseModel):
+    title: str | None = None
+    content: str | None = None
+    author: str
+    modified_at: datetime = Field(default_factory=datetime.now)
