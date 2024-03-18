@@ -1,4 +1,4 @@
-from schemas.post import Post, PostCreateInput, PostUpdateInput
+from schemas.post import Post, PostCreateInput, PostDelInput, PostUpdateInput
 
 init_posted_data = PostCreateInput(
     title="안녕하세요~", content="반갑습니다", author="admin"
@@ -39,4 +39,11 @@ def update_post(post_id: str, post: PostUpdateInput) -> Post:
             if value is not None:
                 setattr(POST_DB[post_id], key, value)
         return POST_DB[post_id]
+    return None
+
+
+def del_post(post_id: str, post: PostDelInput) -> bool:
+    if post_id in POST_DB:
+        del POST_DB[post_id]
+        return True
     return None

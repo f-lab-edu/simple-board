@@ -27,3 +27,7 @@ class PostUpdateInput(BaseModel):
     content: str | None = None
     author: str
     modified_at: datetime = Field(default_factory=datetime.now)
+
+
+class PostDelInput(BaseModel):
+    author: str
